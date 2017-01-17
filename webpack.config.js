@@ -5,11 +5,17 @@ const loaders = require('./webpack/loaders');
 const plugins = require('./webpack/plugins');
 
 const applicationEntries = process.env.NODE_ENV === 'development'
-  ? [ 'webpack-hot-middleware/client?reload=true' ]
-  : [ ];
+  ? [
+    //'webpack-hot-middleware/client?reload=true',    
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server'
+  ]
+  : [];
 
 module.exports = {
-  entry: [ './src/index.tsx' ].concat(applicationEntries),
+  entry: [
+    './src/index.tsx'
+  ].concat(applicationEntries),
 
   output: {
     path: path.join(__dirname, 'dist'),
@@ -43,6 +49,7 @@ module.exports = {
   module: {
     preLoaders: [],
     loaders: [
+      loaders.reacthot,
       loaders.tsx,
       loaders.html,
       loaders.css,

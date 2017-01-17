@@ -21,6 +21,7 @@ const basePlugins = [
 ].concat(sourceMap);
 
 const devPlugins = [
+  new webpack.HotModuleReplacementPlugin()
 ];
 
 const prodPlugins = [

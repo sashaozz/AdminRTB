@@ -1,5 +1,6 @@
 import 'babel-polyfill';
 import * as React from 'react';
+import axios  from 'axios';
 import * as ReactDOM from 'react-dom';
 import * as RB from 'react-bootstrap';
 import * as OZ from './components/index';
@@ -11,7 +12,6 @@ const { syncHistoryWithStore } = require('react-router-redux');
 
 
 declare const __TEST__: boolean;
-
 var products = [{
       id: 1,
       name: "Item name 1",
@@ -21,6 +21,7 @@ var products = [{
       name: "Item name 2",
       price: 100
   }];
+  
 // It's a data format example.
 function priceFormatter(cell, row){
   return '<i class="glyphicon glyphicon-usd"></i> ' + cell;
@@ -57,13 +58,8 @@ if (!__TEST__) {
             <div className="box-header with-border">
               <h3 className="box-title">Bordered Table</h3>
             </div>
-            <div className="box-body">
-              <BootstrapTable data={products} striped={true} hover={true}>
-                  <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
-                  <TableHeaderColumn dataField="name" dataSort={true}>Product Name</TableHeaderColumn>
-                  <TableHeaderColumn dataField="price" dataFormat={priceFormatter}>Product Price</TableHeaderColumn>
-              </BootstrapTable>
-              
+            <div className="box-body">            
+              <OZ.FeatureFlags></OZ.FeatureFlags>              
             </div>
             <div className="box-footer clearfix">
               <ul className="pagination pagination-sm no-margin pull-right">

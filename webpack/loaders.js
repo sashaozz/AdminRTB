@@ -1,10 +1,24 @@
 'use strict';
 
-exports.tsx = {
+exports.reacthot = {
   test: /\.tsx?$/,
-  loader: 'awesome-typescript-loader',
+  loader: 'react-hot',
   exclude: /node_modules/,
 };
+
+// exports.tsx = {
+//   test: /\.tsx?$/,
+//   loader: 'awesome-typescript-loader',
+//   exclude: /node_modules/,
+// };
+
+exports.tsx = {
+  test: /\.tsx?$/,
+  loader: 'ts-loader',
+  exclude: /node_modules/,
+};
+
+
 
 exports.html = {
   test: /\.html$/,
