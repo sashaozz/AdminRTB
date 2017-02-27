@@ -38,7 +38,7 @@ export class FeatureFlagStore {
     }    
 
     @action public async getFlagsFromServer() {
-        this.serverRequest = axios.get("http://localhost:60112/api/featureflags");
+        this.serverRequest = axios.get("http://localhost:5000/api/featureflags");
         var resp = await this.serverRequest
         this.flags = resp.data.map(item => {
             return new FeatureFlagItem(item.id, item.configuration.isEnabled, item.version);
@@ -47,7 +47,7 @@ export class FeatureFlagStore {
 
     @action public addFeatureFlag = async (name) => {
         var flag = new FeatureFlagItem(name, false);
-        var request = axios.post("http://localhost:60112/api/featureflags", {
+        var request = axios.post("http://localhost:5000/api/featureflags", {
             id: flag.id,
             configuration: { isEnabled: flag.enabled }
         });
@@ -56,7 +56,7 @@ export class FeatureFlagStore {
     }
 
     public async updateFlagsOnServer(flag: FeatureFlagItem) {
-        var request = axios.put("http://localhost:60112/api/featureflags/" + flag.id, {
+        var request = axios.put("http://localhost:5000/api/featureflags/" + flag.id, {
             id: flag.id,
             version: flag.version,
             configuration: { isEnabled: flag.enabled }

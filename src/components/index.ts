@@ -11,3 +11,4 @@ export * from './feature-flags/feature-flags-list';
 export * from './feature-flags/feature-flag-row';
 export * from './feature-flags/create-ff-popup';
 export * from './forms/field-group';
+export * from './common/navlink';
