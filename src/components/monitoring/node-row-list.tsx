@@ -51,7 +51,7 @@ interface State {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.selectedNode.backgroundTasks.map(f => <OZ.TaskRow task={f} key={f.taskId} />)}
+                            {this.selectedNode.backgroundTasks.map(f => <OZ.TaskRow task={f} />)}
                         </tbody>
                     </table>
                 </div>

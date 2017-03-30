@@ -14,7 +14,7 @@ export interface TaskRowProps {
         return (
             <tr role="row" >
                 <td className="sorting_1">{this.props.task.taskId}</td>
-                <td>{this.props.task.isRunning}</td>
+                <td>{this.props.task.isRunning ? 'Running' : 'Not running'}</td>
             </tr>
         )
     }
