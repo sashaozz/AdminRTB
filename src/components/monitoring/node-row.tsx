@@ -12,11 +12,11 @@ export interface NodeRowProps {
 @observer export class NodeRow extends React.Component<NodeRowProps, {}> {
     public render() {
         return (
-            <li>
-                <span className="text">{this.props.node.machineName}</span>
-                <span className="text">{this.props.node.nodeId}</span>
-                <span className="text">{this.props.node.backgroundTasks.length}</span>
-            </li>
+            <tr role="row" >
+                <td className="sorting_1">{this.props.node.machineName}</td>
+                <td>{this.props.node.nodeId}</td>
+                <td>{this.props.node.backgroundTasks.length}</td>
+            </tr>
         )
     }
 }

@@ -21,13 +21,18 @@ interface State {
 
     public render() {
         return (
-            <div>
-                <div className="box-body">
-                    <ul className="todo-list">
-                        {this.nodeStore.nodes.map(f => <OZ.NodeRow node={f} key={f.nodeId} />)}
-                    </ul>
-                </div>
-            </div>
+            <table id="example2" className="table table-bordered table-hover dataTable" role="grid">
+                <thead>
+                    <tr role="row">
+                        <th className="sorting_asc" tabindex="0" >Machine Name</th>
+                        <th className="sorting" tabindex="0" >Node Id</th>
+                        <th className="sorting" tabindex="0" >Active processes count</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    {this.nodeStore.nodes.map(f => <OZ.NodeRow node={f} key={f.nodeId} />)}
+                </tbody>
+            </table>
         )
     }
 }
