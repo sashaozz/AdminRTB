@@ -2,7 +2,7 @@
 import * as RB from 'react-bootstrap';
 import * as OZ from '../';
 import * as Models from "../../models"
-import { action, observable } from "mobx";
+import { action, observable, autorun } from "mobx";
 import { observer } from 'mobx-react';
 
 interface Props {
@@ -19,6 +19,14 @@ interface State {
     componentDidMount() {
         this.nodeStore.getNodesFromServer();
         this.interval = setInterval(() => this.nodeStore.getNodesFromServer(), 1000);
+        autorun(() => {
+            var newNodes = this.nodeStore.nodes;
+
+            if (this.selectedNode != null) {
+                var foundNode = newNodes.filter(n => n.nodeId == this.selectedNode.nodeId)[0];
+                this.selectedNode = foundNode; // refresh displayed status
+            }
+        })
     }
     componentWillUnmount() {
         clearInterval(this.interval); 
