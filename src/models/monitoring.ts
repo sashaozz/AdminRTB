@@ -47,4 +47,18 @@ export class MonitoringStore {
             return new NodeItem(item.nodeId, item.machineName, item.backgroundTasks);
         });
     };
+
+    @action public async stopProcess(nodeId: string, processId: string) {
+        var nodes: INodeInfo[] = (await httpClient.Post('/api/monitoring/StopProcess', {
+            NodeId: nodeId,
+            ProcessId: processId
+        })).data;
+    };
+
+    @action public async startProcess(nodeId: string, processId: string) {
+        var nodes: INodeInfo[] = (await httpClient.Post('/api/monitoring/StartProcess', {
+            NodeId: nodeId,
+            ProcessId: processId
+        })).data;
+    };
 }

@@ -12,13 +12,25 @@ interface State {
 
 @observer export class Nodes extends React.Component<Props, State> {
     private nodeStore = new Models.MonitoringStore();
+    private interval: any;
 
     @observable selectedNode: Models.NodeItem = null;
 
     componentDidMount() {
         this.nodeStore.getNodesFromServer();
+        this.interval = setInterval(() => this.nodeStore.getNodesFromServer(), 1000);
     }
     componentWillUnmount() {
+        clearInterval(this.interval); 
+    }
+
+    stopProcess = async (nodeId: string, processId: string) => {
+        debugger;
+        await this.nodeStore.stopProcess(nodeId, processId);
+    }
+
+    startProcess = async (nodeId: string, processId: string) => {
+        await this.nodeStore.startProcess(nodeId, processId);
     }
 
     public render() {
@@ -48,10 +60,14 @@ interface State {
                             <tr role="row">
                                 <th className="sorting_asc">Task Name</th>
                                 <th className="sorting">Is running</th>
+                                <th className="sorting">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {this.selectedNode.backgroundTasks.map(f => <OZ.TaskRow task={f} />)}
+                            {this.selectedNode.backgroundTasks.map(f => <OZ.TaskRow task={f}
+                                nodeId={this.selectedNode.nodeId}
+                                onStart={this.startProcess}
+                                onStop={this.stopProcess} />)}
                         </tbody>
                     </table>
                 </div>
