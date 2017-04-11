@@ -67,7 +67,9 @@ interface State {
                         <thead>
                             <tr role="row">
                                 <th className="sorting_asc">Task Name</th>
+                                <th className="sorting_asc">Task ID</th>
                                 <th className="sorting">Is running</th>
+                                <th className="sorting">State</th>
                                 <th className="sorting">Actions</th>
                             </tr>
                         </thead>

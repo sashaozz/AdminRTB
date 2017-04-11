@@ -10,16 +10,22 @@ export interface INodeInfo {
 
 export interface ITaskInfo {
     taskId: string;
+    taskName : string;
+    taskState : string;
     isRunning: boolean;
 }
 
 export class TaskItem {
-    public taskId: string;
+    public taskId: string;    
+    taskName : string;
+    taskState : string;
     public isRunning: boolean;
 
-    constructor(taskId: string, isRunning: boolean) {
-        this.taskId = taskId;
-        this.isRunning = isRunning;
+    constructor(task : ITaskInfo) {
+        this.taskId = task.taskId;
+        this.taskName = task.taskName;
+        this.taskState = task.taskState;
+        this.isRunning = task.isRunning;
     }
 }
 
@@ -31,7 +37,7 @@ export class NodeItem {
     constructor(nodeId: string, machineName: string, tasks: ITaskInfo[]) {
         this.nodeId = nodeId;
         this.machineName = machineName;
-        this.backgroundTasks = tasks.map(t => new TaskItem(t.taskId, t.isRunning));
+        this.backgroundTasks = tasks.map(t => new TaskItem(t));
     }
 }
 
