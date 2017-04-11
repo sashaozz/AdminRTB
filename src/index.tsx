@@ -61,6 +61,7 @@ const App = React.createClass({
         </footer>
                 <OZ.ControlSideBar></OZ.ControlSideBar>
                 <div className="control-sidebar-bg"></div>
+                <OZ.PopupManager />
             </div>
         )
     }

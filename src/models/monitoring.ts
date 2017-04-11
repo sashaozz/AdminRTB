@@ -41,7 +41,7 @@ export class MonitoringStore {
     @observable nodes: NodeItem[] = [];
 
     @action public async getNodesFromServer() {
-        var nodes: INodeInfo[] = (await httpClient.Get('/api/monitoring/nodes')).data;
+        var nodes = await httpClient.Get<INodeInfo[]>('/api/monitoring/nodes');
         
         this.nodes = nodes.map(item => {
             return new NodeItem(item.nodeId, item.machineName, item.backgroundTasks);
@@ -49,16 +49,16 @@ export class MonitoringStore {
     };
 
     @action public async stopProcess(nodeId: string, processId: string) {
-        var nodes: INodeInfo[] = (await httpClient.Post('/api/monitoring/StopProcess', {
+        await httpClient.Post('/api/monitoring/StopProcess', {
             NodeId: nodeId,
             ProcessId: processId
-        })).data;
+        });
     };
 
     @action public async startProcess(nodeId: string, processId: string) {
-        var nodes: INodeInfo[] = (await httpClient.Post('/api/monitoring/StartProcess', {
+        await httpClient.Post('/api/monitoring/StartProcess', {
             NodeId: nodeId,
             ProcessId: processId
-        })).data;
+        });
     };
 }

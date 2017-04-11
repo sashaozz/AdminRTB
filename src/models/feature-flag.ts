@@ -1,5 +1,6 @@
-import axios from 'axios';
+﻿import axios from 'axios';
 import { action, observable } from "mobx";
+import * as httpClient from '../services/httpclient';
 
 export interface IFeatureFlagItem {
     id: string;
@@ -38,25 +39,24 @@ export class FeatureFlagStore {
     }    
 
     @action public async getFlagsFromServer() {
-        this.serverRequest = axios.get("http://localhost:5000/api/featureflags");
-        var resp = await this.serverRequest
-        this.flags = resp.data.map(item => {
+        var resp = await httpClient.Get<any[]>("/api/featureflags");
+        this.flags = resp.map(item => {
             return new FeatureFlagItem(item.id, item.configuration.isEnabled, item.version);
         });
     };
 
     @action public addFeatureFlag = async (name) => {
         var flag = new FeatureFlagItem(name, false);
-        var request = axios.post("http://localhost:5000/api/featureflags", {
+        var request = httpClient.Post("/api/featureflags", {
             id: flag.id,
             configuration: { isEnabled: flag.enabled }
         });
         var response = await request;
         this.flags.push(flag);
     }
-
+     
     public async updateFlagsOnServer(flag: FeatureFlagItem) {
-        var request = axios.put("http://localhost:5000/api/featureflags/" + flag.id, {
+        var request = httpClient.Put("/api/featureflags/" + flag.id, {
             id: flag.id,
             version: flag.version,
             configuration: { isEnabled: flag.enabled }
