@@ -1,7 +1,17 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\feature-flags",
+    "\\src\\components\\forms",
+    "\\src\\components\\header-bar",
+    "\\src\\components\\monitoring",
+    "\\src\\components\\sidebar",
+    "\\src\\models",
+    "\\src\\pages",
+    "\\src\\services"
   ],
+  "SelectedNode": "\\src\\components\\monitoring\\node-row-list.tsx",
   "PreviewInSolutionExplorer": false
 }
