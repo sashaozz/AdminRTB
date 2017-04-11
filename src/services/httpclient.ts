@@ -1,7 +1,7 @@
 ﻿import axios from 'axios';
 import * as popupManager from '../components/popups/popup-manager';
 
-var root = 'http://localhost:5000/';
+var root = 'http://localhost:5000';
 
 export async function Get<T>(path: string): Promise<T> {
     try {

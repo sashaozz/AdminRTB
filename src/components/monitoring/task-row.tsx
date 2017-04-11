@@ -16,8 +16,10 @@ export interface TaskRowProps {
     public render() {
         return (
             <tr role="row" >
+                <td className="sorting_1">{this.props.task.taskName}</td>
                 <td className="sorting_1">{this.props.task.taskId}</td>
                 <td>{this.props.task.isRunning ? 'Running' : 'Not running'}</td>
+                <td className="sorting_1">{this.props.task.taskState}</td>
                 <td>
                     <button className="btn btn-default btn-sm" onClick={() => this.props.onStop(this.props.nodeId, this.props.task.taskId)}>Stop</button>
                     <button className="btn btn-default btn-sm" onClick={() => this.props.onStart(this.props.nodeId, this.props.task.taskId)}>Start</button>
