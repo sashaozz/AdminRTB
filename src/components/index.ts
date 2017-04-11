@@ -15,3 +15,5 @@ export * from './monitoring/node-row';
 export * from './monitoring/task-row';
 export * from './forms/field-group';
 export * from './common/navlink';
+export * from './popups/login-popup';
+export * from './popups/popup-manager';
