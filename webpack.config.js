@@ -5,8 +5,7 @@ const loaders = require('./webpack/loaders');
 const plugins = require('./webpack/plugins');
 
 const applicationEntries = process.env.NODE_ENV === 'development'
-  ? [
-    //'webpack-hot-middleware/client?reload=true',    
+  ? [  
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server'
   ]
@@ -14,7 +13,7 @@ const applicationEntries = process.env.NODE_ENV === 'development'
 
 module.exports = {
   entry: [
-    './src/index.tsx'
+    'babel-polyfill','./src/index.tsx'
   ].concat(applicationEntries),
 
   output: {
@@ -29,8 +28,7 @@ module.exports = {
     'inline-source-map',
 
   resolve: {
-    extensions: [
-      '',
+    extensions: [      
       '.webpack.js',
       '.web.js',
       '.tsx',
@@ -47,7 +45,6 @@ module.exports = {
   },
 
   module: {
-    preLoaders: [],
     loaders: [
       loaders.reacthot,
       loaders.tsx,

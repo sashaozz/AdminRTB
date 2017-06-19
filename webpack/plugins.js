@@ -14,7 +14,7 @@ const basePlugins = [
     __TEST__: JSON.stringify(process.env.TEST || false),
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
   }),
-  new webpack.NoErrorsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
   new CopyWebpackPlugin([
     { from: 'src/assets', to: 'assets' },
   ]),
@@ -26,6 +26,8 @@ const devPlugins = [
 
 const prodPlugins = [
   new webpack.optimize.UglifyJsPlugin({
+    sourceMap: true, 
+    minimize: true,
     compress: {
       warnings: false,
     },

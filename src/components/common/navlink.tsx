@@ -1,5 +1,10 @@
 import * as React from 'react';
-import * as Router from 'react-router';
+//import * as Router from 'react-router';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
 export class NavLink extends React.Component<any, any> {
     context: any
@@ -9,11 +14,11 @@ export class NavLink extends React.Component<any, any> {
     }
 
     public render() {
-        let isActive = this.context.router.isActive(this.props.to, true);
-        let className = isActive ? "active" : "";
+        //let isActive = this.context.router.isActive(this.props.to, true);
+        //let className = isActive ? "active" : "";
         return (
-            <li className={className}>
-                <Router.Link {...this.props} />
+            <li>                
+                <Link {...this.props} />
             </li>
         )
     }

@@ -2,23 +2,21 @@
 
 exports.reacthot = {
   test: /\.tsx?$/,
-  loader: 'react-hot',
+  loader: 'react-hot-loader',
   exclude: /node_modules/,
 };
 
 // exports.tsx = {
 //   test: /\.tsx?$/,
-//   loader: 'awesome-typescript-loader',
+//   loader: 'ts-loader',
 //   exclude: /node_modules/,
 // };
 
 exports.tsx = {
   test: /\.tsx?$/,
-  loader: 'ts-loader',
+  loader: 'awesome-typescript-loader',
   exclude: /node_modules/,
 };
-
-
 
 exports.html = {
   test: /\.html$/,
@@ -36,6 +34,12 @@ exports.json = {
   test: /\.json$/,
   loader: 'json',
 };
+
+// exports.js = {
+//   test: /\.js$/,
+//   exclude: /node_modules/,
+//   loader: 'babel-loader'
+// };
 
 exports.svg = makeUrlLoader(/\.svg$/);
 exports.eot = makeUrlLoader(/\.eot$/);

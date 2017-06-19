@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import * as ReactRouter from 'react-router-dom';
 import * as RB from 'react-bootstrap';
 import * as OZ from '../components';
 
@@ -7,7 +8,7 @@ interface Props {
 interface State {
 }
 
-export class Monitoring extends React.Component<Props, State> {
+export class Monitoring extends React.Component<ReactRouter.RouteComponentProps<any>, State> {
     public render() {
         return (
             <section className="content">
